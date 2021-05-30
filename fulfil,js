@@ -1,4 +1,4 @@
-<script>
+
 alert('working');
 $.ajax({
     type: "PUT",
@@ -15,4 +15,4 @@ data = {
 console.log(done);
     }
   });
-  </script>
+
