@@ -1,18 +1,19 @@
 
-alert('working');
+
+
+var intervalTime = 1 * 60 * 60 * 1000; //refresh every 1 hour
+
+function refresher() {
 $.ajax({
-    type: "PUT",
-    url: 'https://61310daf539cad1c2e1cdaf85e5090e5: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@jasmeettest.myshopify.com/admin/api/2021-04/orders/{{ order.id }}/fulfillments.json',
-data = {
-        "fulfillment": {
-          "location_id": {{ shop.primary_location_id | json }},
-          "notify_customer": false,
-          "status": "success",
-          "line_items": {{ line_items_to_fulfill | json }}
-        }
-      },
+    type: "GET",
+    url: 'https://61310daf539cad1c2e1cdaf85e5090e5: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@jasmeettest.myshopify.com/admin/api/2021-04/orders.json',
     success: function(response){
-console.log(done);
+console.log(response);
     }
   });
+}
 
+function start() {
+     setInterval("refresher", intervalTime );
+ }
+ start();
